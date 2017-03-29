@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Black-Books Library</title>
+        <link rel="stylesheet" href="./vendors/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./style/main.css"/>
+        <script src="./vendors/angular.min.js"></script>
+        <script src="./script/blackBooks.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="wrapper" class="container-fluid" ng-app="library">
+            <div class="col-xs-12" ng-controller="blackBooks">
+                <div id="ctrl" class="col-xs-12">
+                    <button id="showBooks" ng-click="getBooks()">Books</button>
+                </div>
+                <div id="content" class="col-xs-12">
+                    <table class="col-xs-12 books">
+                        <th ng-repeat="(key,value) in th">{{key}}</th>
+                        <tr ng-repeat="book in books" ng-click="getBooksCopies(book.id)" ng-show="showBooks"><td>{{book.id}}</td><td>{{book.title}}</td><td>{{book.authorName }}</td><td>{{book.authorFirstName}}</td></tr>
+                        <tr ng-repeat="copy in copies" ng-show="showCopies"><td>{{copy.id}}</td><td>{{copy.book.title}}</td><td>{{copy.state.name}}</td><td>{{copy.status.name}}</td><td>{{copy.price}}</td></tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
